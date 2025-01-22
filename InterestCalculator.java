@@ -198,10 +198,10 @@ public class InterestCalculator extends JFrame implements ActionListener
                     //calls the 'effectiveInterestApr' method and passes in the values of 'apr', and 'timesCompounded'
                  totalCost(getEffectiveApr(), getContinuous(), getTimesCompounded(), getPrincipal());
                  //calls the 'totalCost' method and passes in the values of 'effectiveApr', 'continuous', 'timesCompounded', and principal'.
-                 totalTextField.setText(""+ getTotalCost());
+                 totalTextField.setText(""+ Math.round(100.0 * getTotalCost())/100.0);
                  //sets the text of 'totalTextField' to 'totalCost'
-                 effectiveAprTextField.setText("" + (100*(getEffectiveApr()-1)));
-                 //sets the text of 'effectiveAprTextField' to effective interest rate as a percent
+                 effectiveAprTextField.setText("" + (Math.round(10000.0*(getEffectiveApr()-1))/100.0));
+                 //sets the text of 'effectiveAprTextField' to effective interest rate as a percent rounded to the nearest hundredth.
             }
              
              else if(continuous)            //executed if continuous is checked
@@ -214,7 +214,7 @@ public class InterestCalculator extends JFrame implements ActionListener
                  //calls the 'totalCost' method and passes in the values 'effectiveApr', 'continuous', 'timesCompounded' and 'principal'
                  totalTextField.setText(""+ Math.round((getTotalCost() * 100.0))/100.0);
                  //sets the text in 'totalTextField' to the calculated value of 'totalCost' rounded to the nearest cent.
-                 effectiveAprTextField.setText("" + Math.round(100 * (100*(getEffectiveApr()-1)))/100.0);
+                 effectiveAprTextField.setText("" + Math.round(100.0 * (100.0*(getEffectiveApr()-1.00)))/100.0);
                  //sets the text in 'effectiveAprTextField' to the calculated interest rate rounded to the nearest hundredth of a percent.
              }
          }
