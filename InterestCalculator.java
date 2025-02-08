@@ -192,8 +192,9 @@ public class InterestCalculator extends JFrame implements ActionListener
              if(!continuous){           //executed if 'continuousCheck' is not checked
                  setTimesCompounded(Integer.parseInt(compTextField.getText()));
                 //sets 'timesCompounded' to the value inputted to its textField 
-                 setTime(Double.parseDouble(compTextField.getText()));
+                 setTime(Double.parseDouble(timeTextField.getText()));
                    //sets 'time' to the value inputted to its textField 
+                //   System.out.printf("time: %f", getTime());
                  effectiveInterestApr(getApr(), getTimesCompounded());
                     //calls the 'effectiveInterestApr' method and passes in the values of 'apr', and 'timesCompounded'
                  totalCost(getEffectiveApr(), getContinuous(), getTimesCompounded(), getPrincipal());
@@ -243,8 +244,8 @@ public class InterestCalculator extends JFrame implements ActionListener
     public void totalCost(double effectiveApr, boolean continuous, double timesCompounded, double principal)
     {
         if(!continuous){
-            setTotalCost(principal * getEffectiveApr());
-            //if 'continuousCheck' is unchecked, sets 'totalCost' to 'principal * effectiveApr'
+            setTotalCost(principal * (Math.pow(1+ (((getApr()/timesCompounded))/100), timesCompounded * getTime())));
+            //if 'continuousCheck' is unchecked, sets 'totalCost' to 'principal' multiplied by APR compounded the required number of times
         }
         else if(continuous){
             setTotalCost((principal * (Math.pow(Math.E, ((apr/100) * getTime()))))); 
